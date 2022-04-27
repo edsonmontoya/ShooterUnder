@@ -18,23 +18,23 @@ public class MovimientoPersonaje : MonoBehaviour
     float x;
     float z;
     Vector3 move;
-
     public Joystick joystickMover;
     // Start is called before the first frame update
     void Start()
     {
         //Bloqueo del mouse
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
         speed = stats.Velocity.ValorBase;
-        //OpcionesCamara();
+        OpcionesCamara();
         Movimiento();
     }
-
+    
+   
     void OpcionesCamara()
     {
         HorMouse = Input.GetAxis("Mouse X") * HorSpeed * Time.deltaTime;

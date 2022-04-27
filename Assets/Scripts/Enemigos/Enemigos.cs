@@ -15,7 +15,7 @@ public class Enemigos : MonoBehaviour
     UnityEngine.AI.NavMeshAgent enemigo;
     public EnemyController enemyController;
     public bool Atrapado = false;
-
+    public Bala bala;
     public GestionOpciones opciones;
     public GameObject jugador;
     // Start is called before the first frame update
@@ -24,7 +24,11 @@ public class Enemigos : MonoBehaviour
         jugador.GetComponent<Stats>();
         this.enemigo = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
-
+    //Momentaneo
+    private void OnMouseDown()
+    {
+            bala.DisparandoBalaNormal();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -74,7 +78,8 @@ public class Enemigos : MonoBehaviour
 
         }
     }
- 
+    
+
     public void OnTriggerExit(Collider collision)
     {
             if (collision.CompareTag("Player"))
@@ -91,6 +96,7 @@ public class Enemigos : MonoBehaviour
     {
         enemigo.speed = enemigo.speed + 0.1f;
     }
+    
 
 
 }
