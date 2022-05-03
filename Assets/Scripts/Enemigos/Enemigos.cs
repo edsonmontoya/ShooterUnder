@@ -18,6 +18,7 @@ public class Enemigos : MonoBehaviour
     public Bala bala;
     public GestionOpciones opciones;
     public GameObject jugador;
+    public AudioSource zombieDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,7 @@ public class Enemigos : MonoBehaviour
         //Si el enemigo esta en la posicion del jugador se detendra, de lo contrario te seguira
         if (!Atrapado)
         {
-            this.enemigo.destination = enemyController.player.position;
+           this.enemigo.destination = enemyController.player.position;
         }
         if (Atrapado)
         {
@@ -44,12 +45,12 @@ public class Enemigos : MonoBehaviour
 
 
         if (vidaActualEnemigo <= 0)
-        {
+        {   
             enemyController.numeroEnemigosZombie = enemyController.numeroEnemigosZombie - 1;
             opciones.cantidadAlmas = opciones.cantidadAlmas + enemyController.Zombie.MonedasDa;
             opciones.ActualizandoAlmas();
+            zombieDead.Play();
             Destroy(gameObject);
-            
         }
 
         SetSaludEnemigo(SaludEnemigo,vidaActualEnemigo);

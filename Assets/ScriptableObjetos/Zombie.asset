@@ -16,4 +16,4 @@ MonoBehaviour:
   Enemigo: {fileID: 9051626135717905473, guid: dc7e45f5f8f700449b1e5ee0e7fda889, type: 3}
   nameEnemigo: No Muerto
   enemyController: {fileID: 0}
-  MonedasDa: 1
+  MonedasDa: 4

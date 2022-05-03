@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
     private RondaStatus rondastatus;
     public Transform player;
     public Enemigos enemigos;
+    public Enemigos enemigos2;
     public int numeroEnemigosZombie;
     public int numeroInvocacionZombie;
     public int numeroInvocacionGhost;
@@ -27,7 +28,7 @@ public class EnemyController : MonoBehaviour
     public float timer = 10f;
     public Text temporizador;
     public Text numeroRonda;
-    
+    public GameObject tempo;
     public int numeroRondas;
 
     public GestionOpciones opciones;
@@ -42,33 +43,50 @@ public class EnemyController : MonoBehaviour
         
 
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
-            //StartCoroutine(RondaLoop());
-        
-        
-        numeroRonda.text = "Ronda" + " "+ numeroRondas.ToString();
+
+        //StartCoroutine(RondaLoop());
+
+
+        numeroRonda.text = "Ronda" + " " + numeroRondas.ToString();
         temporizador.text = timer.ToString();
-        //Indicamos que si el numero de zombies vivos en este caso el valor es -1 inicie el conteo para iniciar nueva ronda
-        if (numeroEnemigosZombie == -1)
+        this.temporizador.text = $"{Mathf.RoundToInt(timer)}";
+
+        if (preparandoRonda == false)
         {
-            
+            tempo.SetActive(false);
+        }
+        else
+        {
+            tempo.SetActive(true);
+        }
+
+        //Indicamos que si el numero de zombies vivos en este caso el valor es -1 inicie el conteo para iniciar nueva ronda
+        if (numeroEnemigosZombie == 0)
+        {
+            preparandoRonda = true;
             timer = timer - 1*Time.deltaTime;
             //Si el tiempo termino instancia los enemigos 
-            if(numeroEnemigosZombie == -1 && timer <= 0)
+            if(numeroEnemigosZombie == 0 && timer <= 0 )
             {
+                preparandoRonda = false;
                 numeroRondas = numeroRondas + 1;
                 Zombie.MonedasDa = Zombie.MonedasDa + 1;
-                numeroEnemigosZombie = numeroInvocacionZombie;
+                Ghost.MonedasDa = Ghost.MonedasDa + 1;
+                numeroInvocacionGhost = numeroInvocacionGhost + 1;
                 numeroInvocacionZombie = numeroInvocacionZombie + 1;
+                numeroEnemigosZombie = numeroInvocacionZombie + numeroInvocacionGhost;
+                InstanciandoEnemigosGhost();
                 InstanciandoEnemigosZombie();
                 timer = 10f;
                 enemigos.AumentandoVelocidad();
+                enemigos2.AumentandoVelocidad();
                 enemigos.AumentandoCaracteristicasEnemigo();
+                enemigos2.AumentandoCaracteristicasEnemigo();
             }
             
 
@@ -132,6 +150,15 @@ public class EnemyController : MonoBehaviour
         {
             Vector3 pos = new Vector3(23, 0, Random.Range(20, -23));
             Instantiate(Zombieg, pos, Quaternion.identity);
+
+        }
+    }
+    public void InstanciandoEnemigosGhost()
+    {
+        for (int y = 0; y < numeroInvocacionGhost; y++)
+        {
+            Vector3 pos = new Vector3(23, 0, Random.Range(20, -23));
+            Instantiate(Ghostg, pos, Quaternion.identity);
 
         }
     }

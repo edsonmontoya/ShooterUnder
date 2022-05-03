@@ -15,6 +15,5 @@ MonoBehaviour:
   IdEnemy: 1
   Enemigo: {fileID: 5640941148175782696, guid: 504712390eb34b946873d7f1bb40b62c, type: 3}
   nameEnemigo: Fantasma
-  SaludEnemigo: 50
-  vidaActualEnemigo: 50
-  MonedasDa: 1
+  enemyController: {fileID: 0}
+  MonedasDa: 4
