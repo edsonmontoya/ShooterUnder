@@ -23,7 +23,7 @@ public class MovimientoPersonaje : MonoBehaviour
     void Start()
     {
         //Bloqueo del mouse
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
