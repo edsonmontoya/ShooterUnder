@@ -6949,19 +6949,6 @@ NavMeshAgent:
   m_BaseOffset: 3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1027776415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027776409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf21c26ceb51b748b8a8d21cd282c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2578873224553764701}
 --- !u!1001 &1034514847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16146,7 +16133,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2312684562243022040, guid: 9a54b91e539166d47b1082278c3e2812, type: 3}
+    - {fileID: 2312684562243022041, guid: 9a54b91e539166d47b1082278c3e2812, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a54b91e539166d47b1082278c3e2812, type: 3}
 --- !u!23 &6372190890898765893
 MeshRenderer:

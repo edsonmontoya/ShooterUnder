@@ -23,7 +23,7 @@ public class Stats : MonoBehaviour
     // Start is called before the first frame update.
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         panelEstadistica.EstableciendoEstadisticas(Health,Damage,Velocity,SpeedRate,IncKill,IncRound);
         panelEstadistica.ActualizandoValores();
         
