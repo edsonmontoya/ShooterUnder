@@ -34,6 +34,7 @@ public class EnemyController : MonoBehaviour
     public GestionOpciones opciones;
     public ScriptableEnemigo Ghost;
     public ScriptableEnemigo Zombie;
+    public Stats stats;
 
     public bool preparandoRonda = true;
     // Start is called before the first frame update
@@ -62,6 +63,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            stats.ActualHealth._Valor = stats.Health.ValorBase;
             tempo.SetActive(true);
         }
 

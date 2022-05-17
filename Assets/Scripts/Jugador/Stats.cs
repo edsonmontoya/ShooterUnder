@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
+    public ScriptableEnemigo zombie;
+    public ScriptableEnemigo ghost;
     public MovimientoPersonaje personaje;
     public CaracteristicasJugador Health;
     public CaracteristicasJugador Damage;
@@ -12,6 +15,7 @@ public class Stats : MonoBehaviour
     public CaracteristicasJugador SpeedRate;
     public CaracteristicasJugador IncKill;
     public CaracteristicasJugador IncRound;
+    public CaracteristicasJugador ActualHealth;
 
     [SerializeField] PanelCaracteristicas panelEstadistica;
 
@@ -22,12 +26,18 @@ public class Stats : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         panelEstadistica.EstableciendoEstadisticas(Health,Damage,Velocity,SpeedRate,IncKill,IncRound);
         panelEstadistica.ActualizandoValores();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Velocity._Valor = personaje.speed;
+        // Velocity._Valor = personaje.speed;
+        ActualHealth.ValorBase = Health.ValorBase;
+        if(ActualHealth._Valor <= 0)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
 
@@ -106,6 +116,18 @@ public class Stats : MonoBehaviour
             IncRound.Costes = IncRound.Costes * 1.1f;
             IncRound.Costes = Mathf.Round(IncRound.Costes);
             panelEstadistica.ActualizandoValores();
+        }
+    }
+
+    private void OnTriggerEnter(Collider collsion)
+    {
+        if(collsion.CompareTag("Zombie"))
+        {
+            ActualHealth._Valor = ActualHealth._Valor - zombie.Damage;
+        }
+        if (collsion.CompareTag("Ghost"))
+        {
+            ActualHealth._Valor = ActualHealth._Valor - ghost.Damage;
         }
     }
 }
