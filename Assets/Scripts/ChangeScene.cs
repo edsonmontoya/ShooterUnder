@@ -11,6 +11,16 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     // Update is called once per frame
     void Update()
     {
