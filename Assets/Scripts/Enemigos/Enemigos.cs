@@ -19,6 +19,7 @@ public class Enemigos : MonoBehaviour
     public GestionOpciones opciones;
     public GameObject jugador;
     public AudioSource zombieDead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,9 +96,17 @@ public class Enemigos : MonoBehaviour
     }
     public void AumentandoVelocidad()
     {
-        enemigo.speed = enemigo.speed + 0.1f;
+        enemigo.speed = enemigo.speed + 1.005f;
     }
     
-
+    public void AumentandoAlMaximo()
+    {
+        SaludEnemigo = SaludEnemigo * 1.5f;
+        vidaActualEnemigo = SaludEnemigo;
+    }
+    public void AumentandoMaximaVelocidad()
+    {
+        enemigo.speed = enemigo.speed + 1.1f;
+    }
 
 }

@@ -34,7 +34,9 @@ public class EnemyController : MonoBehaviour
     public GestionOpciones opciones;
     public ScriptableEnemigo Ghost;
     public ScriptableEnemigo Zombie;
+    public Boss boss;
     public Stats stats;
+    public int generandoBoss;
 
     public bool preparandoRonda = true;
     // Start is called before the first frame update
@@ -49,7 +51,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //StartCoroutine(RondaLoop());
 
 
@@ -76,6 +77,7 @@ public class EnemyController : MonoBehaviour
             if(numeroEnemigosZombie == 0 && timer <= 0 )
             {
                 preparandoRonda = false;
+                generandoBoss = generandoBoss + 1; 
                 numeroRondas = numeroRondas + 1;
                 Zombie.MonedasDa = Zombie.MonedasDa + 1;
                 Ghost.MonedasDa = Ghost.MonedasDa + 1;
@@ -89,6 +91,18 @@ public class EnemyController : MonoBehaviour
                 enemigos2.AumentandoVelocidad();
                 enemigos.AumentandoCaracteristicasEnemigo();
                 enemigos2.AumentandoCaracteristicasEnemigo();
+
+                if(generandoBoss == 2)
+                {
+                    numeroInvocacionGhost = 2;
+                    numeroInvocacionZombie = 3;
+                    generandoBoss = 0;
+                    enemigos.AumentandoMaximaVelocidad();
+                    enemigos2.AumentandoMaximaVelocidad();
+                    enemigos.AumentandoAlMaximo();
+                    enemigos2.AumentandoAlMaximo();
+                    boss.InstanciandoBoss();
+                }
             }
             
 

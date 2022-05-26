@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b2ae0b028595c5439f53a9747927d78, type: 3}
-  m_Name: Ghost
+  m_Name: Boss
   m_EditorClassIdentifier: 
-  IdEnemy: 1
-  Enemigo: {fileID: 5640941148175782696, guid: 504712390eb34b946873d7f1bb40b62c, type: 3}
-  nameEnemigo: Fantasma
-  Damage: 10
+  IdEnemy: 0
+  Enemigo: {fileID: 0}
+  nameEnemigo: Boss
+  Damage: 25
   enemyController: {fileID: 0}
-  MonedasDa: 2
+  MonedasDa: 50

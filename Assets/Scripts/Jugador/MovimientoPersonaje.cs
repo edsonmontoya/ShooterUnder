@@ -8,6 +8,7 @@ public class MovimientoPersonaje : MonoBehaviour
     float VerMouse;
     float HorMouse;
     float RotCam = 0.0f;
+    public Transform player;
 
     public float VerSpeed;
     public float HorSpeed;
