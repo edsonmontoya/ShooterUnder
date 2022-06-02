@@ -77,7 +77,6 @@ public class Enemigos : MonoBehaviour
         if (collision.CompareTag("Bala"))
         {
             this.vidaActualEnemigo = this.vidaActualEnemigo - statsPersonaje.Damage._Valor;
-
         }
     }
     

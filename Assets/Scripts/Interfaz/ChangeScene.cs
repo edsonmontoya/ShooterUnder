@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    void Update()
+    {
+        
+    }
+
     public void Play()
     {
         SceneManager.LoadScene("Game");
@@ -21,9 +26,4 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

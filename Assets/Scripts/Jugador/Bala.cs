@@ -36,11 +36,5 @@ public class Bala : MonoBehaviour
             balaPrefab = Instantiate(bala, arma.position, Quaternion.identity);
             balaPrefab.AddForce(mira.forward * 100 * velDisparo);
         }
-        
-        
-      
     }
-
-   
-
 }
