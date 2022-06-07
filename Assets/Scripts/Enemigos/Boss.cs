@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EstadosdeCombate 
 {
@@ -17,11 +18,17 @@ public class Boss : MonoBehaviour
     public GameObject jefaso;
     public GameObject jugador;
 
+    public Slider barraVidaBoss;
+
+    public AudioSource Scream;
+
     public bool isALive;
     public bool Atrapado;
 
     public float SaludBoss;
     public float vidaActualBoss;
+
+    public int damageBoss;
 
     public EstadosdeCombate estadosdeCombate;
 
@@ -42,6 +49,8 @@ public class Boss : MonoBehaviour
     
     void Update()
     {
+        SetSaludBoss(SaludBoss, vidaActualBoss);
+
         if (!Atrapado)
         {
             this.jefe.destination = enemy.player.position;
@@ -55,7 +64,16 @@ public class Boss : MonoBehaviour
         {
             isALive = false;
             Destroy(gameObject);
+            Scream.Play();
+            enemy.devilVida = false;
         }
+    }
+
+    public void SetSaludBoss(float SaludBoss, float vidaActualBoss)
+    {
+        float porcentaje = vidaActualBoss / SaludBoss;
+        this.barraVidaBoss.value = porcentaje;
+
     }
 
     public void InstanciandoBoss()
@@ -76,7 +94,7 @@ public class Boss : MonoBehaviour
 
     public void InstanciandoBomba()
     {
-        bomba.transform.position = new Vector3(marca.position.x, marca.position.y + 15, marca.position.z);
+        bomba.transform.position = new Vector3(marca.position.x + 2, marca.position.y + 15, marca.position.z);
         GameObject bomb = Instantiate(bomba, bomba.transform.position, Quaternion.Euler(180, 0, 0)) as GameObject;
         Destroy(bomb, 4f);
     }
@@ -99,8 +117,12 @@ public class Boss : MonoBehaviour
                     break;
                 case EstadosdeCombate.VERIFICAR_MUERTE:
                     yield return new WaitForSeconds(1f);
-                 
-                        estadosdeCombate = EstadosdeCombate.SIGUIENTE;
+                    if (enemy.preparandoRonda == true)
+                    {
+                        isALive = false;
+                    }
+
+                    estadosdeCombate = EstadosdeCombate.SIGUIENTE;
                     
                     yield return null;
                     break;

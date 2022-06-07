@@ -5,6 +5,8 @@ using UnityEngine;
 public class GestionTienda : MonoBehaviour
 {
     public GameObject Caracteristicas;
+    public AudioSource Angel;
+
     //public bool caracteristicasEncendido;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class GestionTienda : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Angel.Play();
             Caracteristicas.SetActive(true);
             //Cursor.lockState = CursorLockMode.None;
         }

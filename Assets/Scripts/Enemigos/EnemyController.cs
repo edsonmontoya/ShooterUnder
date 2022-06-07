@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject Zombieg;
     public GameObject Ghostg;
+    public GameObject VidaBoss;
     
     private RondaStatus rondastatus;
     public Transform player;
@@ -39,6 +40,7 @@ public class EnemyController : MonoBehaviour
     public int generandoBoss;
 
     public bool preparandoRonda = true;
+    public bool devilVida;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,15 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         //StartCoroutine(RondaLoop());
+        if(devilVida == true)
+        {
+            VidaBoss.SetActive(true);
+        }
 
+        if (devilVida == false)
+        {
+            VidaBoss.SetActive(false);
+        }
 
         numeroRonda.text = "Ronda" + " " + numeroRondas.ToString();
         temporizador.text = timer.ToString();
@@ -77,6 +87,7 @@ public class EnemyController : MonoBehaviour
             if(numeroEnemigosZombie == 0 && timer <= 0 )
             {
                 preparandoRonda = false;
+                opciones.cantidadAlmas = opciones.cantidadAlmas + stats.IncRound._Valor;
                 generandoBoss = generandoBoss + 1; 
                 numeroRondas = numeroRondas + 1;
                 Zombie.MonedasDa = Zombie.MonedasDa + 1;
@@ -92,8 +103,9 @@ public class EnemyController : MonoBehaviour
                 enemigos.AumentandoCaracteristicasEnemigo();
                 enemigos2.AumentandoCaracteristicasEnemigo();
 
-                if(generandoBoss == 2)
+                if(generandoBoss == 5)
                 {
+                    devilVida = true;
                     numeroInvocacionGhost = 2;
                     numeroInvocacionZombie = 3;
                     generandoBoss = 0;

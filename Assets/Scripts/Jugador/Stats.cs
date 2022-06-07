@@ -8,6 +8,7 @@ public class Stats : MonoBehaviour
 {
     public ScriptableEnemigo zombie;
     public ScriptableEnemigo ghost;
+    public ScriptableEnemigo devil;
     public MovimientoPersonaje personaje;
     public CaracteristicasJugador Health;
     public CaracteristicasJugador Damage;
@@ -36,7 +37,7 @@ public class Stats : MonoBehaviour
         ActualHealth.ValorBase = Health.ValorBase;
         if(ActualHealth._Valor <= 0)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -128,6 +129,10 @@ public class Stats : MonoBehaviour
         if (collsion.CompareTag("Ghost"))
         {
             ActualHealth._Valor = ActualHealth._Valor - ghost.Damage;
+        }
+        if (collsion.CompareTag("Boss"))
+        {
+            ActualHealth._Valor = ActualHealth._Valor - devil.Damage;
         }
     }
 }
