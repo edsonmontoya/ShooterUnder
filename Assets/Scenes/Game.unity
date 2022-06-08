@@ -21474,6 +21474,10 @@ PrefabInstance:
       propertyPath: joystickMover
       value: 
       objectReference: {fileID: 1043675430}
+    - target: {fileID: 4233236345510050167, guid: 50247df082e25d14cb98c0321f866b3d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4233236346407819256, guid: 50247df082e25d14cb98c0321f866b3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.024
