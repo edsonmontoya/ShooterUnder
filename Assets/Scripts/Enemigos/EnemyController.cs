@@ -103,7 +103,7 @@ public class EnemyController : MonoBehaviour
                 enemigos.AumentandoCaracteristicasEnemigo();
                 enemigos2.AumentandoCaracteristicasEnemigo();
 
-                if(generandoBoss == 5)
+                if(generandoBoss == 3)
                 {
                     devilVida = true;
                     numeroInvocacionGhost = 2;

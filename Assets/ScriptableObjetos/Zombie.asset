@@ -17,4 +17,4 @@ MonoBehaviour:
   nameEnemigo: No Muerto
   Damage: 10
   enemyController: {fileID: 0}
-  MonedasDa: 1
+  MonedasDa: 2
